@@ -138,9 +138,9 @@ or:
 ~~~
 You are tourist guide and will answer the questions to promote activities in the city
 ~~~
-These are the agent configuration details:
- ![Screenshot From 2024-11-26 14-55-13](https://github.com/user-attachments/assets/ca033bae-d702-48e8-9893-3c3c233a0e59)
+- These are the agent configuration details: 
+- ![Screenshot From 2024-11-26 14-55-13](https://github.com/user-attachments/assets/ca033bae-d702-48e8-9893-3c3c233a0e59)
 - Now we can set a chat output connected to the agent response and check the results:
- ![Screenshot From 2024-11-26 13-06-49](https://github.com/user-attachments/assets/8be11bc6-48fe-47d8-b99b-6dbbbbcef60f)
+![Screenshot From 2024-11-26 13-06-49](https://github.com/user-attachments/assets/8be11bc6-48fe-47d8-b99b-6dbbbbcef60f)
 
 Now We're getting more accurate information, based on the updated information from the internet data that We set into the vector store
