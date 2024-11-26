@@ -98,4 +98,6 @@ There are two main flows:
 ### Populate the vector database
 This is the first step that should be executed. This is the workflow:
 - Define an URL that will be used as base content. In this case I set the [Wikipedia entry](https://en.wikipedia.org/wiki/Bucaramanga) for Bucaramanga City. This initial data sosurce could be also a local document, such as a PDF, text file, etc., if don't want to use online data.
-- Set a Recursive Character Text Splitter to separate the document (web page) data into a set of chunks
+- Set a Recursive Character Text Splitter to separate the document (web page) data into a set of chunks.
+- Also it is required to set an Embedding model to generate the vectors for the input data and store it into the vector database.
+- Define the vector store: in this case set a Chroma DB configuring a local path where the store files will be located. Once run the Chroma DB process, the other components in the flow will be executed, storing the source data in the vector store.
