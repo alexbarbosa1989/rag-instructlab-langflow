@@ -45,7 +45,7 @@ ilab model download --repository instructlab/granite-7b-lab-GGUF --filename gran
 ~~~
 $ ilab model serve
 ~~~
-This acction will show also the URL access point for the running instance:
+This action will show also the URL access point for the running instance:
 ~~~
 ... instructlab.model.backends.llama_cpp:233: After application startup complete see http://127.0.0.1:8000/docs for API.
 ~~~
@@ -60,9 +60,9 @@ $ curl -fsSL https://ollama.com/install.sh | sh
 $ ollama pull mxbai-embed-large
 ~~~
 
-## Test the Granite Model without any traninig
+## Test the Granite Model without any training
 
-- Having the granite-lab model served in instructlab, in a separated terminal session start a chat session:
+- Having the granite-lab model served in instructlab, in a separate terminal session start a chat session:
 ~~~
 $ source venv/bin/activate
 ~~~
@@ -73,7 +73,7 @@ $ ilab model chat
 ~~~
 >>> who is the current mayor of Bucaramanga?
 ~~~
-- Since I'm ask directly to the served model without any previous training, it will provide unaccurated information (an allucination):
+- Since I'm ask directly to the served model without any previous training, it will provide inaccurate information (an hallucination):
 ~~~
 ╭───────────────────────────────────────────────────────────────────── granite-7b-lab-Q4_K_M.gguf ─────────────────────────────────────────────────────────────────────╮
 │ The current mayor of Bucaramanga is Gabriel Gomez. He was inaugurated on June 21, 2016, and is serving his second term as the head of the city's government. As the  │
@@ -82,7 +82,7 @@ $ ilab model chat
 │ ...
 ~~~
 
-Therefore, here is where RAG can be used for this purpsose.
+Therefore, here is where RAG can be used for this purpose.
 
 ## Build RAG in LangFlow
 
@@ -122,7 +122,7 @@ Also can be visualized in the Chroma Component output in Langflow:
 
 ### Interact with the served model in Instruclab
 Having populated the vector store, now that data can be used as context for prompts outputs:
-- Set a Chat input with the same question earlier test directly whit the model chat `Who is the current mayor of Bucaramanga?
+- Set a Chat input with the same question earlier test directly with the model chat `Who is the current mayor of Bucaramanga?
 - Create a Promt setting a template that wil contain two variables `context` and `question`:
 ~~~
 {context} -- Prompt from a person that looks for information about Bucaramanga City.
@@ -130,13 +130,13 @@ In their {question} could request details from Bucaramanga City most recent avai
 ~~~
 The question will be connected to the Chat Input and for the Context we need to connect the data that is stored in the Vector Database.
 - To connect the Vector store to the Prompt context, we need to Set a parser, that will conver the data from the Chroma DB to plain text. The Chroma DB will be also connected to an embedding, exactly with the same configuration as in the previously executed flow.
-- Now we need to set the Intructlab as an Agent, that is running locally in the URL `http://127.0.0.1:8000/v1`. We set the model name (no required to match exactly we our actual running model) and We can also set Agent instructions (to set agent behavior), for example:
+- Now we need to set the Intructlab as an Agent, that is running locally in the URL `http://127.0.0.1:8000/v1`. We set the model name (no required to match exactly our actual running model) and We can also set Agent instructions (to set agent behavior), for example:
 ~~~
 You will provide clear and neat answers for the provided promts
 ~~~
 or:
 ~~~
-You are tourist guide and will answer the questions to promote activities in the city
+You are a tourist guide and will answer the questions to promote activities in the city
 ~~~
 - These are the agent configuration details: 
 - ![Screenshot From 2024-11-26 14-55-13](https://github.com/user-attachments/assets/ca033bae-d702-48e8-9893-3c3c233a0e59)
