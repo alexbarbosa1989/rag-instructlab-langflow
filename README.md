@@ -101,3 +101,47 @@ This is the first step that should be executed. This is the workflow:
 - Set a Recursive Character Text Splitter to separate the document (web page) data into a set of chunks.
 - Also it is required to set an Embedding model to generate the vectors for the input data and store it into the vector database.
 - Define the vector store: in this case set a Chroma DB configuring a local path where the store files will be located. Once run the Chroma DB process, the other components in the flow will be executed, storing the source data in the vector store.
+
+The stored data can be check in the defined local path:
+~~~
+(venv) abarbosa@192:~/instructlab$ tree chroma-db
+chroma-db
+├── b70f467c-c818-464f-a299-f1af9a69cfc5
+│   ├── data_level0.bin
+│   ├── header.bin
+│   ├── length.bin
+│   └── link_lists.bin
+└── chroma.sqlite3
+
+2 directories, 5 files
+~~~
+
+Also can be visualized in the Chroma Component output in Langflow:
+![Screenshot From 2024-11-26 14-42-09](https://github.com/user-attachments/assets/3f68420d-3ecc-43dc-9112-a255db201413)
+
+
+### Interact with the served model in Instruclab
+Having populated the vector store, now that data can be used as context for prompts outputs:
+- Set a Chat input with the same question earlier test directly whit the model chat `Who is the current mayor of Bucaramanga?
+- Create a Promt setting a template that wil contain two variables `context` and `question`:
+~~~
+{context} -- Prompt from a person that looks for information about Bucaramanga City.
+In their {question} could request details from Bucaramanga City most recent available information
+~~~
+The question will be connected to the Chat Input and for the Context we need to connect the data that is stored in the Vector Database.
+- To connect the Vector store to the Prompt context, we need to Set a parser, that will conver the data from the Chroma DB to plain text. The Chroma DB will be also connected to an embedding, exactly with the same configuration as in the previously executed flow.
+- Now we need to set the Intructlab as an Agent, that is running locally in the URL `http://127.0.0.1:8000/v1`. We set the model name (no required to match exactly we our actual running model) and We can also set Agent instructions (to set agent behavior), for example:
+~~~
+You will provide clear and neat answers for the provided promts
+~~~
+or:
+~~~
+You are tourist guide and will answer the questions to promote activities in the city
+~~~
+These are the agent configuration details:
+![Screenshot From 2024-11-26 14-55-13](https://github.com/user-attachments/assets/ca033bae-d702-48e8-9893-3c3c233a0e59)
+
+- Now we can set a chat output connected to the agent response and check the results:
+![Screenshot From 2024-11-26 13-06-49](https://github.com/user-attachments/assets/8be11bc6-48fe-47d8-b99b-6dbbbbcef60f)
+
+Now We're getting more accurate information, based on the updated information from the internet data that We set into the vector store
