@@ -87,11 +87,15 @@ Therefore, here is where RAG can be used for this purpsose.
 ## Build RAG in LangFlow
 
 ### Import the RAG project in Langflow
-Access the LangFlow builder URL `http://127.0.0.1:7860` in a browser and import the `BasicRAG-URL.json` which contains the built flow for the RAG test. 
+Access the LangFlow builder URL `http://127.0.0.1:7860` in a browser and import the `BasicRAG-URL.json` file which contains the built flow for the RAG test. 
 There are two main flows:
 1. For Vector Database population:
    ![Screenshot From 2024-11-26 11-57-05](https://github.com/user-attachments/assets/a3aae1ec-aca6-4c9f-9a92-d769432f1a75)
 
-3. For Model interaction:
+2. For Model interaction:
    ![Screenshot From 2024-11-26 11-59-26](https://github.com/user-attachments/assets/783bbe31-f16e-42eb-950d-dd1e8ef379f1)
 
+### Populate the vector database
+This is the first step that should be executed. This is the workflow:
+- Define an URL that will be used as base content. In this case I set the [Wikipedia entry](https://en.wikipedia.org/wiki/Bucaramanga) for Bucaramanga City. This initial data sosurce could be also a local document, such as a PDF, text file, etc., if don't want to use online data.
+- Set a Recursive Character Text Splitter to separate the document (web page) data into a set of chunks
