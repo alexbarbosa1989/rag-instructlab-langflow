@@ -33,7 +33,7 @@ This acction will show the URL access point for the running instance:
 ~~~
 
 ### Instructlab
-- In a different termina session activate the python environment for Instructlab:
+- In a different terminal session activate the python environment for Instructlab:
 ~~~
 $ source venv/bin/activate
 ~~~
