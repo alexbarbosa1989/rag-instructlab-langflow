@@ -10,8 +10,8 @@ This test make a basic RAG implementation using:
 - [Ollama 0.4.4 + mxbai-embed-large](https://ollama.com/blog/embedding-models) model for Vector embedding process in the Chroma Database
 - Python 3.11
 
-For this test, it is required to have running the Langflow and the Instructlab instaces. For installation process I strongly recommend folow each project setup process described in their respective GitHub project repository:
-- Langflow istanllation: https://github.com/langflow-ai/langflow?tab=readme-ov-file#-quickstart
+For this test, it is required to have running the Langflow and the Instructlab instances. For installation process I strongly recommend following each project setup process described in their respective GitHub project repository:
+- Langflow installation: https://github.com/langflow-ai/langflow?tab=readme-ov-file#-quickstart
 - Instructlab: https://github.com/instructlab/instructlab#-getting-started
 - Ollama Embedding Models: https://ollama.com/blog/embedding-models
 - Chroma doesn't require any installation process. The files are automatically created in the path that is set in the Langflow schema.
@@ -45,7 +45,7 @@ ilab model download --repository instructlab/granite-7b-lab-GGUF --filename gran
 ~~~
 $ ilab model serve
 ~~~
-This action will show also the URL access point for the running instance:
+This action will also show the URL access point for the running instance:
 ~~~
 ... instructlab.model.backends.llama_cpp:233: After application startup complete see http://127.0.0.1:8000/docs for API.
 ~~~
@@ -62,7 +62,7 @@ $ ollama pull mxbai-embed-large
 
 ## Test the Granite Model without any training
 
-- Having the granite-lab model served in instructlab, in a separate terminal session start a chat session:
+- Having the granite-lab model served in Instructlab, in a separate terminal session start a chat session:
 ~~~
 $ source venv/bin/activate
 ~~~
@@ -73,7 +73,7 @@ $ ilab model chat
 ~~~
 >>> who is the current mayor of Bucaramanga?
 ~~~
-- Since I'm ask directly to the served model without any previous training, it will provide inaccurate information (an hallucination):
+- Since I'm asking directly to the served model without any previous training, it will provide inaccurate information (a hallucination):
 ~~~
 ╭───────────────────────────────────────────────────────────────────── granite-7b-lab-Q4_K_M.gguf ─────────────────────────────────────────────────────────────────────╮
 │ The current mayor of Bucaramanga is Gabriel Gomez. He was inaugurated on June 21, 2016, and is serving his second term as the head of the city's government. As the  │
